@@ -10,10 +10,10 @@ run_analysis <- function(directory)
 	mean_std_cols <- read.table(paste(directory, "/features.txt", sep=""), header=FALSE)
 
 	# Only feature names with mean()
-    mean_measurements <- subset(mean_std_cols, grepl("mean()", mean_std_cols$V2, fixed=TRUE), drop = FALSE)
+	 mean_measurements <- subset(mean_std_cols, grepl("mean()", mean_std_cols$V2, fixed=TRUE), drop = FALSE)
     
-    # Only feature names with std()
-    std_measurements <- subset(mean_std_cols, grepl("std()", mean_std_cols$V2, fixed=TRUE), drop = FALSE)
+	# Only feature names with std()
+	std_measurements <- subset(mean_std_cols, grepl("std()", mean_std_cols$V2, fixed=TRUE), drop = FALSE)
 
 	tot_filtered_measurements <- rbind(mean_measurements, std_measurements)
 
@@ -64,7 +64,7 @@ run_analysis <- function(directory)
 	dt_melt <- melt(dt_merge, id=c("Activity", "Position", "Subject"), measure.vars=c(as.character(tot_filtered_measurements$V2)))
 	
 	# Writing the data into a tab seperated file
-	write.table(dt_melt, file = "output_melt_complete.txt", append = FALSE, quote = TRUE, sep = "\t", eol = "\n", 
+	write.table(dt_merge, file = "output_melt_complete.txt", append = FALSE, quote = TRUE, sep = "\t", eol = "\n", 
 				na = "NA", dec = ".", row.names = FALSE, col.names = TRUE, qmethod = c("escape", "double"))
 	
 	# Tidying data per position
