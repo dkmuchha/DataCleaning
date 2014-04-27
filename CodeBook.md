@@ -1,7 +1,3 @@
-Existing Data:
-
-Input Data:
-
 Descriptive Data:
 =================
 
